@@ -14,12 +14,15 @@
 - vim - Open the Vim Text Editor 
 
 ## File Paths
-~ - HOME directory
+- ~ - HOME directory
 - Absolute Path - a file path starting with / that specifies a unique location
 - Relative Path - a file path starting with . that defines the relation to the current working directory
 	- .. - used with teh Relative paths to denote the parent directory
 
 ## Git Notes
+- git status - display the status of the repository to the terminal 
 - git add <filename> - adds a file to its changes to staging. 
 - git commit - create a saved state
 	- -m "(message)" - add a PROFESSIONAL commit message
+- git init - initalized a new local reposoitory 
+- git log - display teh history of commits to the terminal 
