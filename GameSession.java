@@ -1,7 +1,7 @@
 public class GameSession {
     String word;
     // set other variables like a map, counter, etc
-    int guesses;
+    int guesses = 0;
 
     GameSession(String s, int count) {
         this.word = s;
@@ -12,6 +12,9 @@ public class GameSession {
         return word;
     }
 
+    public void decrementGuesses() {
+        guesses--;
+    }
     public int getGuesses() {
         return guesses;
     }
