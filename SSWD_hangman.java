@@ -12,22 +12,22 @@ class SSWD_Hangman{
    static Set<Character> mainWord = new HashSet<>();
    static Set<Character> workingWord = new HashSet<>();
 
-    public String guessWord(String userIn){
-    public Boolean guessWord(String userIn, String mainWord, GameSession game){
+
+    public static Boolean guessWord(String userIn) {
 
         // Compare the words together
         //
-
+        System.out.println("Guess word reached here");
         // If gained word is correct
         // Exit game
         // Else, return false.
-        if(userIn == mainWord) {
+        if (userIn == hangman.getWord()) {
             System.out.println("You won!");
             System.exit(0);
             return true;
-        }else{
+        } else {
             System.out.println("Oh...you guessed wrong");
-            game.guesses -= 1;
+
             return false;
         }
     }
@@ -41,9 +41,10 @@ class SSWD_Hangman{
         }
 
         workingWord.add(c);
-        if (mainWord.equals(workingWord))
+        if (mainWord.equals(workingWord)) {
             System.out.println("You Win!");
-
+            System.exit(0);
+        }
         displayGameState();
         return true;
     }
@@ -61,17 +62,15 @@ class SSWD_Hangman{
         System.out.println("Do you want to guess a letter or word?");
         String answer = scanin.nextLine().toLowerCase();
 
-        while(valid){
+        while(hangman.getGameState()){
             if (answer.equalsIgnoreCase("word")){
                 System.out.println("You can now guess your word");
                 String word = scanin.nextLine().toLowerCase();
                 guessWord(word);
-                valid = false;
             } else if (answer.equalsIgnoreCase("letter")){
                 System.out.println("You can now guess a letter");
-                String letter = scanin.nextLine().toLowerCase();
+                Character letter = scanin.next().charAt(0);
                 guessALetter(letter);
-                valid = false;
             } else {
                 System.out.println("Invalid. Answer with either 'word' or 'letter'.");
                 scanin.nextLine();
