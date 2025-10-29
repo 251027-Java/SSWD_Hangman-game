@@ -19,19 +19,28 @@ class SSWD_Hangman{
 
         Scanner scanin = new Scanner(System.in);
         int tryCount = 0;
+        boolean valid = true;
 
         IO.println("Do you want to guess a letter or word?");
         String answer = scanin.nextLine().toLowerCase();
 
-
-        if (answer.equalsIgnoreCase("word")){
-            IO.println("hey");
-        } else if (answer.equalsIgnoreCase("letter")){
-            IO.println("letter letter");
-        } else {
-            IO.println("Invalid. Answer with either 'word' or 'letter'.");
-            scanin.nextLine();
+        while(valid){
+            if (answer.equalsIgnoreCase("word")){
+                IO.println("You can now guess your word");
+                String word = scanin.nextLine().toLowerCase();
+                guessWord(word);
+                valid = false;
+            } else if (answer.equalsIgnoreCase("letter")){
+                IO.println("You can now guess a letter");
+                String letter = scanin.nextLine().toLowerCase();
+                guessALetter(letter);
+                valid = false;
+            } else {
+                IO.println("Invalid. Answer with either 'word' or 'letter'.");
+                scanin.nextLine();
+            }
         }
+
 
 
 
