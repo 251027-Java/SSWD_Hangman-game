@@ -1,7 +1,10 @@
 import java.nio.file.FileSystemNotFoundException;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.Set;
+
+import static java.lang.System.exit;
 
 class SSWD_Hangman{
 
@@ -10,8 +13,23 @@ class SSWD_Hangman{
    static Set<Character> workingWord = new HashSet<>();
 
     public String guessWord(String userIn){
+    public Boolean guessWord(String userIn, String mainWord, GameSession game){
 
-        return "";
+        // Compare the words together
+        //
+
+        // If gained word is correct
+        // Exit game
+        // Else, return false.
+        if(userIn == mainWord) {
+            System.out.println("You won!");
+            System.exit(0);
+            return true;
+        }else{
+            System.out.println("Oh...you guessed wrong");
+            game.guesses -= 1;
+            return false;
+        }
     }
 
     public static boolean guessALetter(char c) {
@@ -35,8 +53,31 @@ class SSWD_Hangman{
         setMainWordSet(hangman.getWord());
         String mainWordArray = "";
         String workingWordArray ="";
+
         Scanner scanin = new Scanner(System.in);
         int tryCount = 0;
+        boolean valid = true;
+
+        System.out.println("Do you want to guess a letter or word?");
+        String answer = scanin.nextLine().toLowerCase();
+
+        while(valid){
+            if (answer.equalsIgnoreCase("word")){
+                System.out.println("You can now guess your word");
+                String word = scanin.nextLine().toLowerCase();
+                guessWord(word);
+                valid = false;
+            } else if (answer.equalsIgnoreCase("letter")){
+                System.out.println("You can now guess a letter");
+                String letter = scanin.nextLine().toLowerCase();
+                guessALetter(letter);
+                valid = false;
+            } else {
+                System.out.println("Invalid. Answer with either 'word' or 'letter'.");
+                scanin.nextLine();
+            }
+        }
+
 
 
     }
