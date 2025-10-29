@@ -1,10 +1,26 @@
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 class SSWD_Hangman{
 
-    public String guessWord(String userIn){
+    public Boolean guessWord(String userIn, String mainWord, int tryCount){
 
-        return "";
+        // Compare the words together
+        //
+
+        // If gained word is correct
+        // Exit game
+        // Else, return false.
+        if(userIn == mainWord) {
+            System.out.println("You won!");
+            System.exit(0);
+            return true;
+        }else{
+            System.out.println("Oh...you guessed wrong");
+            tryCount -= 1;
+            return false;
+        }
     }
 
     public String guessALetter(char c) {
