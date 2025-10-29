@@ -21,7 +21,7 @@ class SSWD_Hangman{
         // If gained word is correct
         // Exit game
         // Else, return false.
-        if (userIn == hangman.getWord()) {
+        if (userIn.equalsIgnoreCase(hangman.getWord())) {
             System.out.println("You won!");
             System.exit(0);
             return true;
@@ -61,6 +61,7 @@ class SSWD_Hangman{
 
         System.out.println("Do you want to guess a letter or word?");
         String answer = scanin.nextLine().toLowerCase();
+
 
         while(hangman.getGameState()){
             if (answer.equalsIgnoreCase("word")){
