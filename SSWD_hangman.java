@@ -4,7 +4,7 @@ import static java.lang.System.exit;
 
 class SSWD_Hangman{
 
-    public Boolean guessWord(String userIn, String mainWord, int tryCount){
+    public Boolean guessWord(String userIn, String mainWord, GameSession game){
 
         // Compare the words together
         //
@@ -18,7 +18,7 @@ class SSWD_Hangman{
             return true;
         }else{
             System.out.println("Oh...you guessed wrong");
-            tryCount -= 1;
+            game.guesses -= 1;
             return false;
         }
     }
