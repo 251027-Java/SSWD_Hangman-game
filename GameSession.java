@@ -12,6 +12,9 @@ public class GameSession {
         return word;
     }
 
+    public void decrementGuesses() {
+        guesses--;
+    }
     public int getGuesses() {
         return guesses;
     }
