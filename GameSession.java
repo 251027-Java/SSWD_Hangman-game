@@ -1,7 +1,7 @@
 public class GameSession {
-    String word;
+    private String word;
     // set other variables like a map, counter, etc
-    int guesses;
+    private int guesses;
 
     GameSession(String s, int count) {
         this.word = s;
