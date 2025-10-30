@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 public class GameSession {
     private String word;
@@ -14,6 +14,22 @@ public class GameSession {
 
     public String getWord() {
         return word;
+    }
+
+    public String getUserGameChoice(){
+
+        System.out.println("Do you now wish to guess a letter or wrod?");
+        Scanner scanin = new Scanner(System.in);
+        String userAnswer = scanin.nextLine().toLowerCase();
+
+        while(!userAnswer.equalsIgnoreCase("letter") && !userAnswer.equalsIgnoreCase("word")){
+
+            System.out.println("You did not enter 'word' or 'letter'. please enter one");
+            userAnswer = scanin.nextLine().toLowerCase();
+        }
+
+        return userAnswer;
+
     }
 
     public void decrementGuesses() {

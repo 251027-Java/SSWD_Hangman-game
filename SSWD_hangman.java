@@ -27,6 +27,7 @@ class SSWD_Hangman{
             displayGameState();
             hangman.getHangView(hangman.getGuesses());
             hangman.setGameState(false);
+            System.exit(0);
             return true;
         } else {
             hangman.decrementGuesses();
@@ -67,7 +68,7 @@ class SSWD_Hangman{
 
 
 
-        hangman = new GameSession("hangman", 6);
+        hangman = new GameSession("cognizant", 6);
         setMainWordSet(hangman.getWord());
         String mainWordArray = "";
         String workingWordArray ="";
@@ -83,6 +84,7 @@ class SSWD_Hangman{
 
 
         while(hangman.getGameState()){
+
             if (answer.equalsIgnoreCase("word")){
                 System.out.println("You can now guess your word");
                 String word = scanin.nextLine().toLowerCase();
@@ -90,6 +92,7 @@ class SSWD_Hangman{
             } else if (answer.equalsIgnoreCase("letter")){
                 System.out.println("You can now guess a letter");
                 Character letter = scanin.next().charAt(0);
+                scanin.nextLine();
                 guessALetter(letter);
             } else {
                 System.out.println("Invalid. Answer with either 'word' or 'letter'.");
@@ -101,6 +104,8 @@ class SSWD_Hangman{
                 System.out.println("Oh no! He's dead!");
                 hangman.setGameState(false);
             }
+
+            answer = hangman.getUserGameChoice();
         }
 
 
