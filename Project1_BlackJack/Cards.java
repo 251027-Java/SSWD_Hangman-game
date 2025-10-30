@@ -10,4 +10,16 @@ public class Cards {
     // shuffle(Cards playercards, Cards dealercards) adds back all cards from player and house and shuffles them
     // showCards(Cards playercards, Cards dealerCards) takes in cards object from player and Dealer and returns what is had
     // =======================
+
+    private Suit suit;
+    private Value value;
+
+//    public Cards(Suit suit, Value value){
+//        this.value = value;
+//        this.suit = suit;
+//    }
+
+
+
+
 }
