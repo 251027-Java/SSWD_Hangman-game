@@ -22,32 +22,43 @@ class SSWD_Hangman{
         // Exit game
         // Else, return false.
         if (userIn.equalsIgnoreCase(hangman.getWord())) {
-            System.out.println("You won!");
+
+            System.out.println("Correct!");
+            displayGameState();
+            hangman.getHangView(hangman.getGuesses());
             hangman.setGameState(false);
             return true;
         } else {
-            System.out.println("Oh...you guessed wrong");
             hangman.decrementGuesses();
+            System.out.println("Oh...you guessed wrong");
             System.out.println("You have: " + hangman.getGuesses() + " Guesses left");
+            hangman.getHangView(hangman.getGuesses());
+            displayGameState();
             return false;
         }
     }
 
     public static boolean guessALetter(char c) {
 
+
         if (!mainWord.contains(c)) {
             hangman.decrementGuesses();
+            hangman.getHangView(hangman.getGuesses());
+            displayGameState();
             System.out.println("Wrong guess!");
             System.out.println("You have: " + hangman.getGuesses() + " Guesses left");
             return false;
         }
 
+
         workingWord.add(c);
         if (mainWord.equals(workingWord)) {
-            displayGameState();
             System.out.println("You Win!");
+            hangman.getHangView(hangman.getGuesses());
+            displayGameState();
             System.exit(0);
         }
+        hangman.getHangView(hangman.getGuesses());
         displayGameState();
         return true;
     }
@@ -68,6 +79,7 @@ class SSWD_Hangman{
         System.out.println("Do you want to guess a letter or word?");
         String answer = scanin.nextLine().toLowerCase();
         hangman.getHangView(hangman.getGuesses());
+        displayGameState();
 
 
         while(hangman.getGameState()) {
