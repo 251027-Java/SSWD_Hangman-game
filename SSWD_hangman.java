@@ -103,7 +103,6 @@ class SSWD_Hangman{
     }
 
     private static void setMainWordSet(String word) {
-        System.out.println("Current status");
         for (int i = 0; i < word.length(); i++) {
             mainWord.add(word.charAt(i));
         }
