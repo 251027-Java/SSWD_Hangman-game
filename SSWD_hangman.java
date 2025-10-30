@@ -61,23 +61,58 @@ class SSWD_Hangman{
         int tryCount = 0;
         boolean valid = true;
 
-        System.out.println("Do you want to guess a letter or word?");
-        String answer = scanin.nextLine().toLowerCase();
+//        System.out.println("Guess a letter: ");
+//        String answer = scanin.nextLine().toLowerCase();
 
 
-        while(hangman.getGameState()){
-            if (answer.equalsIgnoreCase("word")){
-                System.out.println("You can now guess your word");
-                String word = scanin.nextLine().toLowerCase();
-                guessWord(word);
-            } else if (answer.equalsIgnoreCase("letter")){
-                System.out.println("You can now guess a letter");
-                Character letter = scanin.next().charAt(0);
-                guessALetter(letter);
-            } else {
-                System.out.println("Invalid. Answer with either 'word' or 'letter'.");
-                scanin.nextLine();
+        while(hangman.getGameState()) {
+//            if (answer.equalsIgnoreCase("word")) {
+//                System.out.println("You can now guess your word");
+//                String word = scanin.nextLine().toLowerCase();
+//                guessWord(word);
+//            }
+            System.out.println("Guess a letter: ");
+            Character answer = scanin.nextLine().charAt(0);
+            guessALetter(answer);
+
+
+//            if (answer.equalsIgnoreCase("letter")) {
+//                System.out.println("You can now guess a letter");
+//                Character letter = scanin.next().charAt(0);
+//                guessALetter(letter);
+//            }
+            if (hangman.getGuesses() == 3) {
+                System.out.println("Do you want to guess word now?");
+                String response = scanin.nextLine().toLowerCase();
+                if (response.equalsIgnoreCase("yes")) {
+                    System.out.println("Guess word");
+                    String newWord = scanin.nextLine().toLowerCase();
+                    guessWord(newWord);
+                } else if (response.equalsIgnoreCase("no")) {
+                    System.out.println("Continue guessing letter");
+                    Character newLetter = scanin.next().charAt(3);
+                    guessALetter(newLetter);
+                }
             }
+//            else {
+//                System.out.println("Invalid. Answer with either 'word' or 'letter'.");
+//                scanin.nextLine();
+//            }
+
+//            while (hangman.getGuesses() == 4){
+//                System.out.println("Do you want to guess word now?");
+//                String response = scanin.nextLine().toLowerCase();
+//                if(response.equalsIgnoreCase("yes")){
+//                    System.out.println("Guess word");
+//                    String newWord = scanin.nextLine().toLowerCase();
+//                    guessWord(newWord);
+//                } else if(response.equalsIgnoreCase("no")){
+//                    System.out.println("Continue guessing letter");
+//                    Character newLetter = scanin.next().charAt(3);
+//                    guessALetter(newLetter);
+//                }
+//                hangman.decrementGuesses();
+//            }
 
             if(hangman.getGuesses() == 0){
                 System.out.println("Oh no! You're out of guesses!");
