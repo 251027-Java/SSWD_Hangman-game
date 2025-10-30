@@ -6,7 +6,7 @@ public class GameSession {
     private int guesses;
     private boolean gameState;
 
-    GameSession(String s, int count) {
+    public GameSession(String s, int count) {
         this.word = s;
         this.guesses = count;
         this.gameState = true;
@@ -18,7 +18,7 @@ public class GameSession {
 
     public String getUserGameChoice(){
 
-        System.out.println("Do you now wish to guess a letter or wrod?");
+        System.out.println("Do you now wish to guess a letter or word?");
         Scanner scanin = new Scanner(System.in);
         String userAnswer = scanin.nextLine().toLowerCase();
 
