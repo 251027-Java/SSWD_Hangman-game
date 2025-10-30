@@ -12,7 +12,7 @@ public class Hello {
     public static void main(String[] args){
         // We Have to begin with a hello world, it's a necessity, not a choice.
         System.out.println("Hello world");
-        IO.println("Hello Again!");
+        System.out.println("Hello Again!");
 
 
         //numerical types
@@ -69,16 +69,16 @@ public class Hello {
         // make a choice based on the boolean
         // If it's true
         if(myBool != true){
-            IO.println("MyBool was true");
+            System.out.println("MyBool was true");
         }else{
             // if it's false, do B
-            IO.println("MyBool was false");
+            System.out.println("MyBool was false");
         }
 
         String newString;
         newString = "Hello Everyone!";
 
-        IO.println(newString);
+        System.out.println(newString);
         //for (iterator, expression, increment)
         for(int i = 0; i < newString.length(); i++){
             System.out.println(newString.charAt(i));
