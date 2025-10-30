@@ -6,7 +6,7 @@ public class GameSession {
 
     GameSession(String s, int count) {
         this.word = s;
-        int guesses = count;
+        this.guesses = count;
         this.gameState = true;
     }
 

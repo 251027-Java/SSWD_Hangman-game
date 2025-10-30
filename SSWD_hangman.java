@@ -17,17 +17,18 @@ class SSWD_Hangman{
 
         // Compare the words together
         //
-        System.out.println("Guess word reached here");
+        //System.out.println("Guess word reached here");
         // If gained word is correct
         // Exit game
         // Else, return false.
         if (userIn.equalsIgnoreCase(hangman.getWord())) {
             System.out.println("You won!");
-            System.exit(0);
+            hangman.setGameState(false);
             return true;
         } else {
             System.out.println("Oh...you guessed wrong");
-
+            System.out.println("You have: " + hangman.getGuesses() + " Guesses left");
+            hangman.decrementGuesses();
             return false;
         }
     }
@@ -37,6 +38,7 @@ class SSWD_Hangman{
         if (!mainWord.contains(c)) {
             hangman.decrementGuesses();
             System.out.println("Wrong guess!");
+            System.out.println("You have: " + hangman.getGuesses() + " Guesses left");
             return false;
         }
 
@@ -75,6 +77,11 @@ class SSWD_Hangman{
             } else {
                 System.out.println("Invalid. Answer with either 'word' or 'letter'.");
                 scanin.nextLine();
+            }
+
+            if(hangman.getGuesses() == 0){
+                System.out.println("Oh no! You're out of guesses!");
+                hangman.setGameState(false);
             }
         }
 
