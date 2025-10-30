@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.Set;
 
+
 import static java.lang.System.exit;
 
 class SSWD_Hangman{
@@ -14,7 +15,6 @@ class SSWD_Hangman{
 
 
     public static Boolean guessWord(String userIn) {
-
         // Compare the words together
         //
         //System.out.println("Guess word reached here");
@@ -27,8 +27,8 @@ class SSWD_Hangman{
             return true;
         } else {
             System.out.println("Oh...you guessed wrong");
-            System.out.println("You have: " + hangman.getGuesses() + " Guesses left");
             hangman.decrementGuesses();
+            System.out.println("You have: " + hangman.getGuesses() + " Guesses left");
             return false;
         }
     }
@@ -52,6 +52,9 @@ class SSWD_Hangman{
     }
 
     public static void main(String[] args){
+
+
+
         hangman = new GameSession("hangman", 6);
         setMainWordSet(hangman.getWord());
         String mainWordArray = "";
@@ -63,6 +66,7 @@ class SSWD_Hangman{
 
         System.out.println("Do you want to guess a letter or word?");
         String answer = scanin.nextLine().toLowerCase();
+        hangman.getHangView(hangman.getGuesses());
 
 
         while(hangman.getGameState()){
@@ -80,7 +84,8 @@ class SSWD_Hangman{
             }
 
             if(hangman.getGuesses() == 0){
-                System.out.println("Oh no! You're out of guesses!");
+                hangman.getHangView(hangman.getGuesses());
+                System.out.println("Oh no! He's dead!");
                 hangman.setGameState(false);
             }
         }
