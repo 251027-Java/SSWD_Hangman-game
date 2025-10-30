@@ -1,5 +1,5 @@
 package Project1_BlackJack;
 
-public enum Suit {
+public enum CardSuit {
     SPADE, DIAMOND, HEART, CLUBS
 }
