@@ -44,6 +44,7 @@ class SSWD_Hangman{
 
         workingWord.add(c);
         if (mainWord.equals(workingWord)) {
+            displayGameState();
             System.out.println("You Win!");
             System.exit(0);
         }
