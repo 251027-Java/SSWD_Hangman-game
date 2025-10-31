@@ -15,18 +15,14 @@ public class House {
 
     public House() {
         this.balance = 1000;
-        this.cards = cards;
     }
 
     public ArrayList<Cards> getCards() {return this.cards;}
 
     public void setCards(ArrayList<Cards> newCards) {this.cards = newCards;}
 
-    public String revealVisibleCard(){
-        //String temp = cards[0].getValue();
-        List list = cards;
-        Cards c = list.get(0);
-        return c.getValue();
+    public Cards revealVisibleCard(){
+        return cards.getFirst();
     }
 
 }
