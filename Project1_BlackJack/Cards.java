@@ -1,7 +1,5 @@
 package Project1_BlackJack;
 
-
-
 public class Cards {
 
     // ========Cards class==========
@@ -13,31 +11,31 @@ public class Cards {
     // showCards(Cards playercards, Cards dealerCards) takes in cards object from player and Dealer and returns what is had
     // =======================
 
-     private CardSuit myCardSuit;
-     private CardValue myCardValue;
+     private String suit;
+     private String value;
 
-    public Cards(CardSuit cardSuit, CardValue cardValue){
-        myCardValue = cardValue;
-        myCardSuit = cardSuit;
+    public Cards(String suit, String value){
+        this.suit = suit;
+        this.value = value;
     }
 
     public String toString(){
-        return myCardSuit.toString() + "-" + myCardValue.toString();
+        return value + " - " + suit;
     }
 
-    public CardSuit getMySuit() {
-        return myCardSuit;
+    public String getSuit() {
+        return suit;
     }
 
-    public void setMySuit(CardSuit cardSuit) {
-        myCardSuit = cardSuit;
+    public void setSuit(String cardSuit) {
+        this.suit = suit;
     }
 
-    public CardValue getMyValue() {
-        return myCardValue;
+    public String getValue() {
+        return value;
     }
 
-    public void setMyValue(CardValue val) {
-        myCardValue = val;
+    public void setValue(String val) {
+        this.value = val;
     }
 }
