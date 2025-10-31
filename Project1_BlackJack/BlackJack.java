@@ -8,11 +8,22 @@ public class BlackJack {
         // gameState game = new gameState()
         // game.start()
 
+
+        // Testing card deck
         CardDeck cd = new CardDeck();
 
-        // cd.displayDeck() but for some reason my project isnt recognizing
-        // the package. The code runs perfectly fine though I tested
-        // it in another project.
+        System.out.println("Deck in order :");
+        cd.displayDeck();
+
+        System.out.println("\nDeck shuffled :");
+        cd.shuffleDeck();
+        cd.displayDeck();
+
+        System.out.println("\nDrawing top 3 cards :");
+        System.out.println(cd.drawCard());
+        System.out.println(cd.drawCard());
+        System.out.println(cd.drawCard());
+
 
     }
 }
