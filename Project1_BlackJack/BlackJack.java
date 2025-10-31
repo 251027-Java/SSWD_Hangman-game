@@ -5,11 +5,17 @@ public class BlackJack {
 
     public static void main(String args[]) {
 
-        // gameState game = new gameState()
-        // game.start()
+        gameState game = new gameState();
+        game.start();
+
+
+
+
 
 
         // Testing card deck
+
+        /*
         CardDeck cd = new CardDeck();
 
         System.out.println("Deck in order :");
@@ -23,7 +29,7 @@ public class BlackJack {
         System.out.println(cd.drawCard());
         System.out.println(cd.drawCard());
         System.out.println(cd.drawCard());
-
+        */
 
     }
 }

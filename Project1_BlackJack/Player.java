@@ -1,5 +1,6 @@
 package Project1_BlackJack;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player {
@@ -7,9 +8,9 @@ public class Player {
     // Purpose == Class that sets, gets the state of the players actions and cards through the game
     // Player() - constructor
     // getCards() - Gets the cards the player has along with the number their cards adds too.
-        //arrayList
+    //arrayList
     // getNextPlayerAction() - Gets the next player action. Only accepts: ['hit', 'stand', 'double'] for now
-        //scanner
+    //scanner
     // getBet() - Get player bet
     // getBalance() - Get player balance
     // setBet() - Sets the Players current bet
@@ -22,25 +23,25 @@ public class Player {
     //Bet money
     private int currentBet;
     //player cards amount
-    private String[] cards;
+    private ArrayList<Cards> cards = new ArrayList<>();
 
     //Making a new player
     public Player() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("How much of YOUR HARD EARNED money are willing to Gamble?: ");
+        System.out.print("How much of YOUR HARD EARNED money are willing to Gamble?(balance): ");
         this.balance = scanner.nextInt();
         this.currentBet = 0;          // No bet yet
-        this.cards = new String[0];   // No cards yet
+        this.cards = cards;   // No cards yet
     }
 
     //Get the player's cards
-    public String[] getCards() {
-        return cards;
+    public ArrayList<Cards> getCards() {
+        return this.cards;
     }
 
     //Set the player's cards
-    public void setCards(String[] newCards) {
-        cards = newCards;
+    public void setCards(ArrayList<Cards> newCards) {
+        this.cards = newCards;
     }
 
     //Get the next action from the player
@@ -63,17 +64,17 @@ public class Player {
 
     // Get the player's bet
     public int getBet() {
-        return currentBet;
+        return this.currentBet;
     }
 
     // Set the player's bet
     public void setBet(int betAmount) {
-        currentBet = betAmount;
+        this.currentBet = betAmount;
     }
 
     // Get the player's balance
     public int getBalance() {
-        return balance;
+        return this.balance;
     }
 
     // Set the player's balance
