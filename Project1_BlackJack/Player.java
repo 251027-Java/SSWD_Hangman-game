@@ -19,17 +19,30 @@ public class Player {
 
     // Fields
     //Player money
-    private int balance;
+    private int balance = 0;
     //Bet money
     private int currentBet;
     //player cards amount
-    private ArrayList<Cards> cards = new ArrayList<>();
+    public ArrayList<Cards> cards = new ArrayList<>();
 
     //Making a new player
     public Player() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("How much of YOUR HARD EARNED money are willing to Gamble?(balance): ");
-        this.balance = scanner.nextInt();
+
+        // Adds balance to players bank for the rest of the game
+        System.out.print("How much money do you wish to add to your balance?");
+        while(this.balance < 10) {
+            try {
+                this.balance = scanner.nextInt();
+
+                if (this.balance < 10){
+                    System.out.println("You must enter an amount greater than 10 to play");
+                }
+            } catch (Exception e){
+                    System.out.println("You did not enter a valid input. Please enter a number greater than 10");
+                    scanner.next();
+            }
+        }
         this.currentBet = 0;          // No bet yet
         this.cards = cards;   // No cards yet
     }
@@ -40,8 +53,13 @@ public class Player {
     }
 
     //Set the player's cards
-    public void setCards(ArrayList<Cards> newCards) {
-        this.cards = newCards;
+    public void addCard(Cards newCard) {
+
+        this.cards.add(newCard);
+    }
+
+    public void removecards(){
+        this.cards = new ArrayList<Cards>();
     }
 
     //Get the next action from the player
@@ -50,16 +68,49 @@ public class Player {
         String action = "";
 
         // Make the player type either "hit" or "stand"
-        while (!action.equals("hit") && !action.equals("stand")) {
-            System.out.print("hit or stand: ");
+        while (!action.equalsIgnoreCase("hit") && !action.equalsIgnoreCase("stand") && !action.equalsIgnoreCase("Double")) {
+            System.out.print("Enter either hit, stand, Double: ");
             action = scanner.nextLine().toLowerCase();
 
-            if (!action.equals("hit") && !action.equals("stand")) {
-                System.out.println("That word is not one of the options given to you. Try again. Type 'hit' or 'stand'.");
+            if (!action.equalsIgnoreCase("hit") && !action.equalsIgnoreCase("stand") && !action.equalsIgnoreCase("Double")) {
+                System.out.println("That word is not one of the options given to you. Try again. Type 'hit', 'stand', or 'double'.");
             }
         }
 
         return action;
+    }
+
+    public int getCardSum(){
+
+        int sum = 0;
+        for(Cards card: this.cards){
+            sum += card.getRealVal();
+        }
+
+        return sum;
+    }
+
+
+    // Meant to get final card sum. Final sum. Includes changes for ace cards from 11 to 1 and vice versa
+    public int getFinalCardSum() {
+        int sum = 0;
+        int aceCount = 0;
+
+        for (Cards card : this.cards) {
+            int val = card.getRealVal();
+            sum += val;
+            if (card.getValue().equalsIgnoreCase("Ace")) {
+                aceCount++;
+            }
+        }
+
+        // Personal note: if there is something to track, always count that thing to track. Makes it easier to exit condition
+        while (sum > 21 && aceCount > 0) {
+            sum -= 10;
+            aceCount--;
+        }
+
+        return sum;
     }
 
     // Get the player's bet
@@ -79,6 +130,6 @@ public class Player {
 
     // Set the player's balance
     public void setBalance(int newBalance) {
-        balance = newBalance;
+        this.balance = newBalance;
     }
 }
