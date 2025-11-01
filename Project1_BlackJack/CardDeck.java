@@ -42,6 +42,19 @@ public class CardDeck {
         }
     }
 
+    public void resetDeck() {
+        this.gameDeck = new ArrayList<>();
+        String[] suits = {"Hearts", "Diamonds", "Spades", "Clubs"};
+        String[] values = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+
+        // This will generate our deck of 52
+        for(String cardSuit : suits){
+            for(String cardVal : values){
+                gameDeck.add(new Cards(cardSuit,cardVal));
+            }
+        }
+    }
+
 
 
 
